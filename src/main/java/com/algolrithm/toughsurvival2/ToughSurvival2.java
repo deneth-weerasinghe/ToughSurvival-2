@@ -1,5 +1,8 @@
 package com.algolrithm.toughsurvival2;
 
+import com.algolrithm.toughsurvival2.client.HUDHandler;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -43,6 +46,10 @@ public class ToughSurvival2 {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        if (FMLEnvironment.getDist().isClient()) {
+            modEventBus.addListener(this::onRegisterHUDHandler);
+        }
+
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
@@ -79,5 +86,9 @@ public class ToughSurvival2 {
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
+    }
+
+    private void onRegisterHUDHandler(final RegisterGuiLayersEvent event) {
+        HUDHandler.register(event);
     }
 }
