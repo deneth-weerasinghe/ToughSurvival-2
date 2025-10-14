@@ -70,7 +70,7 @@ public class HUDHandler {
         drawHydrationBar(player, event.guiGraphics, event.x, event.y, event.hydration);
     }
     // TODO see what happens if change access modifier to private
-    public static void drawHydrationBar(Player player, GuiGraphics guiGraphics, int right, int top, float hydration) {
+    private static void drawHydrationBar(Player player, GuiGraphics guiGraphics, int right, int top, float hydration) {
         right -= 9;
         int x;
         int y = top;
