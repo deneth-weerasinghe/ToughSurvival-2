@@ -15,9 +15,9 @@ public class HUDRenderEvent extends Event implements ICancellableEvent {
         this.guiGraphics = guiGraphics;
     }
     public static class HydrationBar extends HUDRenderEvent {
-        public float hydration;
+        public int hydration;
 
-        public HydrationBar(float hydration, int x, int y, GuiGraphics guiGraphics) {
+        public HydrationBar(int hydration, int x, int y, GuiGraphics guiGraphics) {
             super(x, y, guiGraphics);
             this.hydration = hydration;
         }
