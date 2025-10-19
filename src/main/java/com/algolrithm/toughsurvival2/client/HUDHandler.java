@@ -46,9 +46,9 @@ public class HUDHandler {
 
         @Override
         public void render(Minecraft mc, Player player, GuiGraphics guiGraphics, int top, int right, int left) {
-            int x = right / 2 + 10 + 81;
+            int x = right / 2 + 91 - 9;
             int y = top - 49;
-            int testValue = 10;
+            int testValue = 11;
 
             HUDRenderEvent.HydrationBar hydrationBarEvent = new HUDRenderEvent.HydrationBar(testValue, x, y, guiGraphics);
             if(player.getVehicle() instanceof LivingEntity) {
@@ -70,18 +70,13 @@ public class HUDHandler {
         drawHydrationBar(player, event.guiGraphics, event.x, event.y, event.hydration);
     }
     private static void drawHydrationBar(Player player, GuiGraphics guiGraphics, int right, int top, int hydration) {
-        right -= 9;
-        int x;
-        int y = hydration / 2;
-        boolean z = hydration % 2 == 0;
-
         for (int i = 0; i < 10; i++) {
-            x = right - (i * 8);
+            int x = right - (i * 8);
             guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, HYDRATION_EMPTY, x, top ,9, 9);
-            if(i < y) {
+            if(i < hydration / 2) {
                 guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, HYDRATION_FULL, x, top ,9, 9);
             }
-            if (i == y && !z) {
+            if (i == hydration / 2 && hydration % 2 == 1) {
                 guiGraphics.blitSprite(RenderPipelines.GUI_TEXTURED, HYDRATION_HALF, x, top ,9, 9);
             }
         }
