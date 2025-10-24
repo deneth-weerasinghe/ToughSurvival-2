@@ -12,7 +12,7 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ToughSurvival2.MODID);
 
     public static final DeferredItem<Item> WATER_GLASS = ITEMS.registerItem("water_glass",
-            Item::new,
+            ModDrinkableItem::new,
             new Item.Properties().food(new FoodProperties.Builder().nutrition(0).saturationModifier(0F).build()));
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
