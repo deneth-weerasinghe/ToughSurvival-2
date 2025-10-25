@@ -7,5 +7,7 @@
   "examplemod.configuration.magicNumberIntroduction": "Magic Number Text",
   "examplemod.configuration.magicNumber": "Magic Number",
 
+  "attributes.toughsurvival2.player_hydration": "Hydration",
+
   "item.toughsurvival2.water_glass": "Glass of Water"
 }
