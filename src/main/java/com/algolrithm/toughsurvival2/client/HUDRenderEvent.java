@@ -1,4 +1,4 @@
-package com.algolrithm.toughsurvival2.event.client;
+package com.algolrithm.toughsurvival2.client;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.neoforged.bus.api.Event;

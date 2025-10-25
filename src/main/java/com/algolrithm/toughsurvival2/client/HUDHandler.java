@@ -1,7 +1,6 @@
 package com.algolrithm.toughsurvival2.client;
 
 import com.algolrithm.toughsurvival2.ToughSurvival2;
-import com.algolrithm.toughsurvival2.event.client.HUDRenderEvent;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;

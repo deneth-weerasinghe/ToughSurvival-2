@@ -1,7 +1,6 @@
 package com.algolrithm.toughsurvival2.item;
 
 import com.algolrithm.toughsurvival2.ToughSurvival2;
-import com.algolrithm.toughsurvival2.component.ItemHydration;
 import com.algolrithm.toughsurvival2.component.ModComponents;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
