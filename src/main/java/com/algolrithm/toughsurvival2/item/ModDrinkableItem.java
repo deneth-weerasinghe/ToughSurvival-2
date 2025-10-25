@@ -23,16 +23,10 @@ public class ModDrinkableItem extends Item {
         Level level = context.getLevel();
         Block clickedBlock = level.getBlockState(context.getClickedPos()).getBlock();
 
-        if(clickedBlock == Blocks.GOLD_BLOCK) {
-            if(!level.isClientSide()) {
-                context.getItemInHand().set(ModComponents.ITEM_HYDRATION, new ItemHydration(5));
-                ToughSurvival2.LOGGER.info("==========DATA ADDED==========");
-            }
-        }
         if(clickedBlock == Blocks.DIAMOND_BLOCK) {
 
             if(!level.isClientSide() && context.getItemInHand().get(ModComponents.ITEM_HYDRATION) != null) {
-                ToughSurvival2.LOGGER.info("==========DISPLAY DATA:" + Objects.requireNonNull(context.getItemInHand().get(ModComponents.ITEM_HYDRATION)).getHydration());
+                ToughSurvival2.LOGGER.info("==========DISPLAY DATA: " + Objects.requireNonNull(context.getItemInHand().get(ModComponents.ITEM_HYDRATION)).getHydration());
             }
         }
         return InteractionResult.SUCCESS;
