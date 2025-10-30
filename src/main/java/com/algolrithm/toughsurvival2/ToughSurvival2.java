@@ -3,10 +3,9 @@ package com.algolrithm.toughsurvival2;
 import com.algolrithm.toughsurvival2.client.HUDHandler;
 import com.algolrithm.toughsurvival2.component.ModComponents;
 import com.algolrithm.toughsurvival2.item.ModItems;
-import com.algolrithm.toughsurvival2.player.ModPlayerAttributes;
+import com.algolrithm.toughsurvival2.player.ModData;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -17,7 +16,6 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
 
@@ -45,7 +43,7 @@ public class ToughSurvival2 {
 
         ModItems.register(modEventBus);
         ModComponents.register(modEventBus);
-        ModPlayerAttributes.register(modEventBus);
+        ModData.register(modEventBus);
 
         // Register the item to a creative tab
 //        modEventBus.addListener(this::addCreative);

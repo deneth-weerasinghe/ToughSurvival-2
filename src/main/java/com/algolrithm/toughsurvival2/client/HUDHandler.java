@@ -1,11 +1,13 @@
 package com.algolrithm.toughsurvival2.client;
 
 import com.algolrithm.toughsurvival2.ToughSurvival2;
+import com.algolrithm.toughsurvival2.player.ModData;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
@@ -47,9 +49,10 @@ public class HUDHandler {
         public void render(Minecraft mc, Player player, GuiGraphics guiGraphics, int top, int right, int left) {
             int x = right / 2 + 91 - 9;
             int y = top - 49;
-            int testValue = 11;
 
-            HUDRenderEvent.HydrationBar hydrationBarEvent = new HUDRenderEvent.HydrationBar(testValue, x, y, guiGraphics);
+            int hydration = Mth.floor(player.getData(ModData.HYDRATION));
+
+            HUDRenderEvent.HydrationBar hydrationBarEvent = new HUDRenderEvent.HydrationBar(hydration, x, y, guiGraphics);
             if(player.getVehicle() instanceof LivingEntity) {
                 hydrationBarEvent.setCanceled(true);
             }
