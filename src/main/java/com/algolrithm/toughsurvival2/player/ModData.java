@@ -2,6 +2,7 @@ package com.algolrithm.toughsurvival2.player;
 
 import com.algolrithm.toughsurvival2.ToughSurvival2;
 import com.mojang.serialization.Codec;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -13,13 +14,16 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.function.Supplier;
 
-@EventBusSubscriber
+@EventBusSubscriber(modid = ToughSurvival2.MODID)
 public class ModData {
     private static final DeferredRegister<AttachmentType<?>> MOD_ATTACHMENTS = DeferredRegister.create(
             NeoForgeRegistries.ATTACHMENT_TYPES, ToughSurvival2.MODID);
 
     public static final Supplier<AttachmentType<Double>> HYDRATION = MOD_ATTACHMENTS.register(
-            "hydration", () -> AttachmentType.builder(() -> 20d).serialize(Codec.DOUBLE.fieldOf("hydration")).build()
+            "hydration", () -> AttachmentType.builder(() -> Hydration.MAX_HYDRATION)
+                    .serialize(Codec.DOUBLE.fieldOf("hydration"))
+                    .sync((holder, to) -> holder == to, ByteBufCodecs.DOUBLE)
+                    .build()
     );
 
     public static void register(IEventBus modBus) {

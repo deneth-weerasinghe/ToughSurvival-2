@@ -10,8 +10,8 @@ import net.minecraft.world.item.component.Consumables;
 public class ModDrinkableItem extends Item {
     public ModDrinkableItem(Properties properties, int hydration) {
         super(properties
-                .component(DataComponents.CONSUMABLE, Consumables.defaultDrink().build())
                 .component(ModComponents.ITEM_HYDRATION.get(), new ItemHydration(hydration))
+                .component(DataComponents.CONSUMABLE, Consumables.defaultDrink().build())
         );
     }
 }
