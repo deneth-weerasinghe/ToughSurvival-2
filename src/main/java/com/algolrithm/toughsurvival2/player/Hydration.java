@@ -8,7 +8,7 @@ public class Hydration {
     public static void resetHydration(Player player, double hydration) {
         player.setData(ModData.HYDRATION, sanitizeHydration(hydration));
     }
-    public static void setHydration(Player player, double hydration) {
+    public static void incrementHydration(Player player, double hydration) {
         player.setData(ModData.HYDRATION, sanitizeHydration(getHydration(player) + hydration));
     }
     public static double getHydration(Player player) {

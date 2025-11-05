@@ -14,7 +14,7 @@ public class ModItems {
 
     public static final DeferredItem<Item> WATER_GLASS = ITEMS.register("water_glass",
             registryName -> new ModDrinkableItem(
-                    new Item.Properties().setId(ResourceKey.create(Registries.ITEM, registryName)), 11)
+                    new Item.Properties().setId(ResourceKey.create(Registries.ITEM, registryName)), 2)
             );
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

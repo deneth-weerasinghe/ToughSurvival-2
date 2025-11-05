@@ -21,7 +21,7 @@ public class DataEventHandler {
            if (target instanceof Pig) {
                Hydration.resetHydration(player, 16d);
            } else if (target instanceof Cow) {
-               Hydration.setHydration(player, -1d);
+               Hydration.incrementHydration(player, -1d);
            }
         }
         if(player.hasData(ModData.HYDRATION)) {
