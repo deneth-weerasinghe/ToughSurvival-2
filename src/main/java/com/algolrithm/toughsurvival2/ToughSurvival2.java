@@ -26,6 +26,19 @@ public class ToughSurvival2 {
     public static final String MODID = "toughsurvival2";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
+
+    public static void SimpleLogger(String title, double a) {
+        LOGGER.info(String.format("============="+title+": %.1f=============", a));
+    }
+    public static void SimpleLogger(String title, int a) {
+        LOGGER.info(String.format("============="+title+": %d=============", a));
+    }
+    public static void SimpleLogger(String title, long a) {
+        LOGGER.info(String.format("============="+title+": %d=============", a));
+    }
+    public static void SimpleLogger(String title, boolean a) {
+        LOGGER.info(String.format("============="+title+": %b=============", a));
+    }
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public ToughSurvival2(IEventBus modEventBus, ModContainer modContainer) {
