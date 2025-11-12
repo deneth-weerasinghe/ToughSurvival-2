@@ -3,7 +3,7 @@ package com.algolrithm.toughsurvival2.event;
 import com.algolrithm.toughsurvival2.ToughSurvival2;
 import com.algolrithm.toughsurvival2.component.ItemHydration;
 import com.algolrithm.toughsurvival2.component.ModComponents;
-import com.algolrithm.toughsurvival2.player.Hydration;
+import com.algolrithm.toughsurvival2.player.HydrationHelper;
 import com.algolrithm.toughsurvival2.player.ModData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.Cow;
@@ -14,22 +14,38 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 @EventBusSubscriber(modid = ToughSurvival2.MODID)
 public class DataEventHandler {
+    @SubscribeEvent
+    private static void setModAttachments(PlayerEvent.PlayerLoggedInEvent event) {
+        Player player = event.getEntity();
+        if(!player.level().isClientSide()) {
+            if (!player.hasData(ModData.HYDRATION)) {
+                player.getData(ModData.HYDRATION);
+                ToughSurvival2.LOGGER.info("ATTACHED HYDRATION DATA!!!");
+            }
+            if(!player.hasData(ModData.HYDRATION_EXHAUSTION)) {
+                player.getData(ModData.HYDRATION_EXHAUSTION);
+            }
+        }
+    }
+
+    // TODO: DEBUG
     @SubscribeEvent
     public static void checkHydration(AttackEntityEvent event){
         Player player = event.getEntity();
         if (!player.level().isClientSide() && !event.isCanceled()) {
             Entity target = event.getTarget();
            if (target instanceof Pig) {
-               Hydration.resetHydration(player, 6d);
+               HydrationHelper.resetHydration(player, 6d);
            } else if (target instanceof Cow) {
-               Hydration.incrementHydration(player, -1d);
+               HydrationHelper.incrementHydration(player, -1d);
            }
         }
         if(player.hasData(ModData.HYDRATION)) {
-            ToughSurvival2.SimpleLogger("HYDRATION", Hydration.getHydration(player));
+            ToughSurvival2.SimpleLogger("HYDRATION", HydrationHelper.getHydration(player));
         }
     }
     @SubscribeEvent

@@ -1,6 +1,6 @@
 package com.algolrithm.toughsurvival2.component;
 
-import com.algolrithm.toughsurvival2.player.Hydration;
+import com.algolrithm.toughsurvival2.player.HydrationHelper;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
@@ -31,7 +31,7 @@ public record ItemHydration(int hydration) implements ConsumableListener {
     @Override
     public void onConsume(Level level, LivingEntity entity, ItemStack stack, Consumable consumable) {
         if(entity instanceof Player player && !level.isClientSide()) {
-            Hydration.incrementHydration(player, stack.get(ModComponents.ITEM_HYDRATION).hydration());
+            HydrationHelper.incrementHydration(player, stack.get(ModComponents.ITEM_HYDRATION).hydration());
         }
     }
 }
